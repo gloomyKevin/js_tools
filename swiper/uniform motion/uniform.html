@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        window.onload = function () {
+            var cur = document.getElementById('box');
+            cur.onclick = function () {
+                startMove(500);
+            }
+        }
+
+        /* 通过left控制运动 */
+        /* function startMove() {
+            var cur = document.getElementById('box');
+            setInterval(function () {
+                cur.style.left = cur.offsetLeft + 5 + 'px';
+            }, 30)
+        } */
+
+        /* 让运动停止 */
+        /* function startMove() {
+            var cur = document.getElementById('box');
+            timer = setInterval(function () {
+                if (cur.offsetLeft === 500) {
+                    clearInterval(timer);
+                } else {
+                    cur.style.left = cur.offsetLeft + 5 + 'px';
+                }
+            }, 30)
+        } */
+
+        /* 解决点击加速 */
+        /* function startMove() {
+            clearInterval(timer);
+            var cur = document.getElementById('box');
+            timer = setInterval(function () {
+                if (cur.offsetLeft === 500) {
+                    clearInterval(timer);
+                } else {
+                    cur.style.left = cur.offsetLeft + 5 + 'px';
+                }
+            }, 30)
+        } */
+
+        // 第一次简单封装
+        /* function startMove(speed, target) {
+            clearInterval(timer);
+            var cur = document.getElementById('box');
+            var timer = setInterval(function () {
+                var speed = 0;
+                if (cur.offsetLeft < target) {
+                    speed = 5;
+                } else {
+                    speed = -5
+                };
+                if (cur.offsetLeft === target) {
+                    clearInterval(timer);
+                } else {
+                    cur.style.left = cur.offsetLeft + speed + 'px';
+                }
+            }, 30)
+        } */
+
+        // 第二次封装，减少参数
+        /* function startMove(target) {
+            clearInterval(timer);
+            var cur = document.getElementById('box');
+            var timer = setInterval(function () {
+                var speed = 0;
+                if (cur.offsetLeft < target) {
+                    speed = 5;
+                } else {
+                    speed = -5
+                };
+                if (cur.offsetLeft === target) {
+                    clearInterval(timer);
+                } else {
+                    cur.style.left = cur.offsetLeft + speed + 'px';
+                }
+            }, 30)
+        } */
+
+        /* function startMove(target) {
+            clearInterval(timer);
+            var cur = document.getElementById('box');
+            var timer = setInterval(function () {
+                var now = parseInt(compatibleStyle(cur, 'left'));
+                var speed = 0;
+                if (now < target) {
+                    speed = 5;
+                } else {
+                    speed = -5
+                };
+                if (cur.offsetLeft === target) {
+                    clearInterval(timer);
+                } else {
+                    cur.style.left = now + speed + 'px';
+                }
+            }, 30)
+        }
+
+        function compatibleStyle(obj, attr) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                getComputedStyle(obj, null)[attr];
+            }
+        } */
+
+        // 变速运动
+        /* function startMove(target) {
+            clearInterval(timer);
+            var cur = document.getElementById('box');
+            var timer = setInterval(function () {
+                var speed = (target - cur.offsetLeft) / 20;
+                if (cur.offsetLeft === target) {
+                    clearInterval(timer);
+                } else {
+                    console.log(cur.style.left)
+                    cur.style.left = cur.offsetLeft + speed + 'px';
+                }
+            }, 30)
+        } */
+
+        // 解决无限打印
+        function startMove(target) {
+            clearInterval(timer);
+            var cur = document.getElementById('box');
+            var timer = setInterval(function () {
+                var speed = Math.ceil((target - cur.offsetLeft) / 20);
+                if (cur.offsetLeft === target) {
+                    clearInterval(timer);
+                } else {
+                    console.log(cur.style.left)
+                    cur.style.left = cur.offsetLeft + speed + 'px';
+                }
+            }, 30)
+        }
+    </script>
+</body>
+
+</html>
