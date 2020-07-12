@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swiper组件</title>
+    <link rel="stylesheet" href="main.js">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <div class="wrap">
+                <img src="./imgs/5.jpg" alt="5">
+                <img src="./imgs/1.jpg" alt="1">
+                <img src="./imgs/2.jpg" alt="2">
+                <img src="./imgs/3.jpg" alt="3">
+                <img src="./imgs/4.jpg" alt="4">
+                <img src="./imgs/5.jpg" alt="5">
+                <img src="./imgs/1.jpg" alt="1">
+            </div>
+            <div class="button">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <a href="javascript:void(0);" class="jt jt_left">&lt;</a>
+            <a href="javascript:void(0);" class="jt jt_right">&gt;</a>
+        </div>
+
+        <script>
+            window.onload = function () {
+                var cur = document.getElementById('box');
+                cur.onclick = function () {
+                    startMove(500);
+                }
+            }
+
+        </script>
+    </body>
+
+</html>
